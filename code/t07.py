@@ -9,8 +9,8 @@ opener = build_opener(handler)
 req = Request("http://www.baidu.com")
 req.add_header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)")
 result = opener.open(req)
-print(result.getheadlers())
 # print(type(cookie))
 for item in cookie:
     print(item.name, ": ",  item.value)
+
 

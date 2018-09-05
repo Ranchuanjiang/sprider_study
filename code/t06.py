@@ -13,4 +13,3 @@ try:
     print(re.read().decode("utf-8"))
 except URLError as e:
     print(e.reason)
-p
