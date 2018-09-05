@@ -7,10 +7,10 @@ except HTTPError as e:
     #
     """
     print(e.reason)
-    print(e.code)
+    print()
     print(e.headers)
     """
-"""
+"""e.code
 输出: 
 Not Found
 404
