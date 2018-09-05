@@ -10,7 +10,7 @@ print(urlopen(req).read().decode("utf-8"))
 rp = RobotFileParser()
 # 指定 robots 协议地址
 # 还可以直接在创建的时候指定
-# rp RobotFileParser(url)
+# rp = RobotFileParser(url)
 rp.set_url(url)
 rp2 = RobotFileParser()
 rp2.parse(urlopen(req).read().decode("utf-8").split("\n"))
