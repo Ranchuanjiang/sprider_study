@@ -12,11 +12,12 @@ rp = RobotFileParser()
 # 还可以直接在创建的时候指定
 # rp = RobotFileParser(url)
 rp.set_url(url)
+rp.read()
 rp2 = RobotFileParser()
 rp2.parse(urlopen(req).read().decode("utf-8").split("\n"))
 
 # 必须有read() 不调用这个方法 下面判定都会为False, 该方法不返回内容, 只执行读取操作
-rp.read()
+
 
 print(rp.can_fetch("*", "https://www.jianshu.com/p/6c80df0c0280"))
 print(rp.can_fetch("*", "https://www.jianshu.com/search?q=python&page=1&type=collections"))
@@ -56,7 +57,7 @@ User-agent: Googlebot
 Request-rate: 2/1 # load 2 page per 1 seconds
 Crawl-delay: 10
 
-False   <---- 为什么为False
+False<---- 为什么为False  补充: 分析源码显示..此处直接 open url 403 代码  拒绝 所以建议使用parse 来处理 robots 协议
 False 
 True
 False
