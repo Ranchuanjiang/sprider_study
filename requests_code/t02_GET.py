@@ -1,4 +1,4 @@
-# GET 请求
+2# GET 请求
 import requests
 
 r = requests.get("http://httpbin.org/get")
