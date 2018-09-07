@@ -3,7 +3,7 @@
 
 import requests
 import re
-# 如果不添加 header 信息  就不能正常请求  header 李可以添加其他字段的信息
+# 如果不添加 header 信息  就不能正常请求  header 也可以添加其他字段的信息
 header = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36"
 }
