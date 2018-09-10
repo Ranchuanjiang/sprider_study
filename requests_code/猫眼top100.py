@@ -2,6 +2,7 @@
 from requests import *
 import re
 import json
+import time
 
 
 def get_one_page(url):
@@ -34,23 +35,27 @@ def parse_one_page(text):
         yield {
             "排名:": item[0],
             "封面:": item[1],
-            "片面:": item[2],
-            "演员表:": item[3],
-            "上映时间:": item[4],
+            "片名:": item[2],
+            "演员表:": item[3][3:],
+            "上映时间:": item[4][5:],
             "评分": item[5]
         }
 
 def write_to_file(content):
-    with open("猫眼top100.txt", "a", encodeing="utf-8") as f:
-        f.write(json.dumps(content, ensure_acsii=False) + "\n")
+    with open("猫眼top100.txt", "a", encoding="utf-8") as f:
+        f.write(json.dumps(content, ensure_ascii=False) + "\n")
 
 
 
-def main():
-    pass
+def main(url_all):
+    url = url_all
+    text = get_one_page(url)
+    movie = parse_one_page(text)
+    for i in  movie:
+        write_to_file(i)
 
 if __name__ == "__main__":
-    url = "http://maoyan.com/board/4?offset=0"
-    text = get_one_page(url)
-    for i in parse_one_page(text):
-        print(i)
+    for i in range(10):
+        url = "http://maoyan.com/board/4?offset="
+        main(url+str(i*10))
+        time.sleep(1)
