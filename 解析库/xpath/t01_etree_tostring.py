@@ -29,7 +29,7 @@ print(result.decode("utf-8"))
 </li></ul>
 </div>
 
-可以 看到 这个已经被不全了
+可以 看到 这个已经被补全了
 """
 # 还可以 通过文本文件直接解析
 html = etree.parse("test.html", etree.HTMLParser())
