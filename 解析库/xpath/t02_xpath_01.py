@@ -46,3 +46,50 @@ print(result)
 输出:
 [<Element a at 0x250e3403048>, <Element a at 0x250e3403088>, <Element a at 0x250e34030c8>, <Element a at 0x250e3403108>, <Element a at 0x250e3403148>]
 """
+# 父节点
+result = html.xpath("//a[@href=\"link4.html\"]/../@class")
+print(result)
+# 输出: ['item-3']
+# 也可以用parent:: 来匹配父节点
+result = html.xpath("//a[@href=\"link4.html\"]/parent::*/@class")
+print(result)
+
+# 输出结果和上面的一样
+
+# 属性匹配
+result = html.xpath("//li[@class=\"item-4\"]")
+print(result)
+# 结果: [<Element li at 0x2e3b0ad7d08>]
+
+# 文本获取
+result = html.xpath("//li[@class=\"item-0\"]/a/text()")
+print(result)
+# 输出结果: ['first item']
+# 另外一种匹配方法
+result = html.xpath("//li[@class=\"item-0\"]//text()")
+print(result)
+# 输出结果: ['first item']
+# 属性获取
+
+result = html.xpath("//li/a/@href")
+print(result)
+# 输出结果:['link1.html', 'link2.html', 'link3.html', 'link4.html', 'link5.html']
+# 属性多汁匹配 contains() 函数
+text = """
+<div>
+    <ul>
+        <li class="li list_item" name="lisa"><a href="link1.html">first item</a></li>
+        <li class="li list_item" ><a href="link2.html">second item</a></li>
+    </ul>
+<div>
+"""
+html = etree.HTML(text)
+# result = html.xpath("//li[@class li]/a/text()")   # 报错!
+result = html.xpath("//li[contains(@class, \"li\")]/a/text()")
+print(result)
+# 输出结果: ['first item', 'second item']
+
+result = html.xpath("//li[contains(@class, \"li\") and @name=\"lisa\"]/a/text()")
+print(result)
+# 输出结果: ['first item']
+
