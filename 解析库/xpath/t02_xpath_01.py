@@ -92,4 +92,20 @@ print(result)
 result = html.xpath("//li[contains(@class, \"li\") and @name=\"lisa\"]/a/text()")
 print(result)
 # 输出结果: ['first item']
+html = etree.parse("test.html", etree.HTMLParser())
+result = html.xpath("//li[1]/a/text()")
+print(result)
+result = html.xpath("//li[last()]/a/text()")
+print(result)
+result = html.xpath("//li[position()<3]/a/text()")
+print(result)
+result = html.xpath("//li[last()-1]/a/text()")
+print(result)
+"""
+输出结果:
+['first item']
+['fifth item']
+['first item', 'second item']
+['fourth item']
 
+"""
