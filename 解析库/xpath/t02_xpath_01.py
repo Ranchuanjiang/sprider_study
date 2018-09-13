@@ -74,7 +74,7 @@ print(result)
 result = html.xpath("//li/a/@href")
 print(result)
 # 输出结果:['link1.html', 'link2.html', 'link3.html', 'link4.html', 'link5.html']
-# 属性多汁匹配 contains() 函数
+# 属性多值匹配 contains() 函数
 text = """
 <div>
     <ul>
